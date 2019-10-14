@@ -33,12 +33,14 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
 
         products = ViewModelProviders.of(this).get(ProductViewModel.class);
 
+        /*
         products.getProducts(getApplicationContext()).observe(this, new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
-
+                Log.d("CHANGED HERE!","ENTERED " + products);
+                getAll(products);
             }
-        });
+        });*/
     }
 
     public void actionFromButton(View view){
@@ -61,10 +63,24 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
     }
     public void doAction(View view){
 
+        String src = "%"+((EditText)findViewById(R.id.searchText)).getText()+"%";
+        products.searchProducts(getApplicationContext(),src).observe(this,
+                new Observer<List<Product>>() {
+            @Override
+            public void onChanged(List<Product> products) {
+                Log.d("CHANGED HERE!","ENTERED " + products);
+                getAll(products);
+            }
+        });
+
+        /*
+        // version 2 to obtain products from database!
         DatabaseTask task = new DatabaseTask(getApplicationContext(), this);
         Product p = new Product();
         p.name = "%"+((EditText)findViewById(R.id.searchText)).getText()+"%";
         task.execute(p);
+
+
         /*
         Log.d("CUSTOM","CLICK ON  ME!");
         TextView v = findViewById(R.id.editText);

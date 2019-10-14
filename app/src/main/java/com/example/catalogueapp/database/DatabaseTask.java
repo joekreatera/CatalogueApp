@@ -24,11 +24,13 @@ public class DatabaseTask extends AsyncTask<Product,Void, List<Product>> {
     }
     @Override
     protected List<Product> doInBackground(Product... params) {
-
-        if( params[0].name.equals(""))
+        return null;
+        /*if( params[0].name.equals(""))
             return db.productDao().getAll();
 
         return db.productDao().search(params[0].name);
+
+         */
     }
     @Override
     public void onPostExecute(List<Product> result){

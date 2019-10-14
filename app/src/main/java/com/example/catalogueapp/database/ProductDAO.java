@@ -1,6 +1,7 @@
 package com.example.catalogueapp.database;
 
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -22,8 +23,8 @@ public interface ProductDAO {
     public void deleteProduct(Product... products);
 
     @Query("SELECT * FROM product")
-    public List<Product> getAll();
+    public LiveData<List<Product>> getAll();
 
     @Query("SELECT * FROM product WHERE name LIKE :searchName")
-    public List<Product> search(String searchName);
+    public LiveData<List<Product>> search(String searchName);
 }
