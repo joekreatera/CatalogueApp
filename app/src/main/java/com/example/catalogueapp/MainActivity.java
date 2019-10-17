@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
 
     public static String MESSAGE = "com.example.catalogueApp.MainActivity";
     ProductViewModel products;
+    ProductCatalogueAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
 
         products = ViewModelProviders.of(this).get(ProductViewModel.class);
 
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        adapter= new ProductCatalogueAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         /*
         products.getProducts(getApplicationContext()).observe(this, new Observer<List<Product>>() {
             @Override
@@ -48,18 +55,20 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
     }
 
     public void getAll(List<Product> products){
-
+/*
         LayoutInflater inflater = getLayoutInflater();
         ViewGroup table = findViewById(R.id.catalogueList);
         table.removeAllViews();
 
-        for (Product actual:products) {
+        for (Product actual:products) {z<
             Log.d("Hello","PRODUCTS NAME HERE! " + actual.name);
             View row = inflater.inflate(R.layout.row_layout,table, false );
             TextView vw = row.findViewById(R.id.productName);
             vw.setText(actual.name);
             table.addView(row);
         }
+
+ */
     }
     public void doAction(View view){
 
@@ -69,7 +78,8 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
             @Override
             public void onChanged(List<Product> products) {
                 Log.d("CHANGED HERE!","ENTERED " + products);
-                getAll(products);
+                //getAll(products);
+                adapter.setProducts(products);
             }
         });
 

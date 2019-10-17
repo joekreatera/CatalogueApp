@@ -38,13 +38,21 @@
                     />
             </LinearLayout>
 
-
+<!--
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/catalogueList"
                 ></TableLayout>
+-->
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/recycler_item_view"
+                android:id="@+id/recycler_view">
+
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </ScrollView>
 
