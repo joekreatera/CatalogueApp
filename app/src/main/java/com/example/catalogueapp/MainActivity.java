@@ -102,4 +102,9 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
         Log.d("TEXT " ,"" + v.getText());
         startActivity(intent);*/
     }
+
+    public void goToWeb(View view){
+        Intent intent = new Intent(this, WebCallActivity.class);
+        startActivity(intent);
+    }
 }

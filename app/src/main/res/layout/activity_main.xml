@@ -36,6 +36,14 @@
                     android:text="Button"
                     android:onClick="doAction"
                     />
+                <Button
+                    android:id="@+id/webButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Button"
+                    android:onClick="goToWeb"
+                    />
             </LinearLayout>
 
 <!--
