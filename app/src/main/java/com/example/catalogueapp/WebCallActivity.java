@@ -24,7 +24,7 @@ public class WebCallActivity extends AppCompatActivity {
 
         StringRequest req = new StringRequest(
                 Request.Method.GET,
-                "https://10.25.245.184:8000",
+                "http://10.0.2.2:8000",
                 new NodeStringWebRequest(),
                 new NodeWebRequestError()
         );
