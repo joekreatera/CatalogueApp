@@ -107,4 +107,8 @@ public class MainActivity extends AppCompatActivity implements DatabaseReceiver 
         Intent intent = new Intent(this, WebCallActivity.class);
         startActivity(intent);
     }
+    public void goToService(View view){
+        Intent intent = new Intent(this, DoServiceActivity.class);
+        startActivity(intent);
+    }
 }
